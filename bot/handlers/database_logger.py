@@ -1,11 +1,11 @@
-from bot.handler import Handler
-from bot.database_client import persists_updates
+from .handler import *
+from bot.database_client import persist_update
 
 
 class DbLogger(Handler):
-    def can_handle(self, update: dict) -> bool:
+    def can_handle(self, update: dict, state: str, order_json: dict) -> bool:
         return True
 
-    def handle(self, update: dict) -> bool:
-        persists_updates([update])
-        return True
+    def handle(self, update: dict, state: str, order_json: dict) -> HandlerStatus:
+        persist_update([update])
+        return HandlerStatus.CONTINUE

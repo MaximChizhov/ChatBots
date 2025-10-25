@@ -1,12 +1,12 @@
 from bot.dispatcher import Dispatcher
-from bot.handlers import MessageEcho, PhotoEcho, StickerEcho, DbLogger
+from bot.handlers import get_handlers
 from bot.long_polling import start_long_polling
 
 
 def main() -> None:
     try:
         dispatcher = Dispatcher()
-        dispatcher.add_handler(DbLogger(), MessageEcho(), PhotoEcho(), StickerEcho())
+        dispatcher.add_handler(*get_handlers())
         start_long_polling(dispatcher)
 
     except KeyboardInterrupt:

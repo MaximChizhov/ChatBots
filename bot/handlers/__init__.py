@@ -1,6 +1,19 @@
-from .message_echo import MessageEcho
-from .photo_echo import PhotoEcho
-from .sticker_echo import StickerEcho
+from .handler import Handler
+from .message_start import MessageStart
 from .database_logger import DbLogger
+from .ensure_user_exists import EnsureUserExists
+from .pizza_selection import PizzaSelection
+from .pizza_size import PizzaSize
+from .pizza_drinks import PizzaDrinks
+from .order_approval import OrderApproval
 
-__all__ = ["DbLogger", "MessageEcho", "PhotoEcho", "StickerEcho"]
+def get_handlers() -> list[Handler]:
+    return [
+        DbLogger(),
+        EnsureUserExists(),
+        MessageStart(),
+        PizzaSelection(),
+        PizzaSize(),
+        PizzaDrinks(),
+        OrderApproval()
+    ]

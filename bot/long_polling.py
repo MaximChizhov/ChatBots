@@ -1,4 +1,3 @@
-from bot.database_client import persists_updates
 from bot.dispatcher import Dispatcher
 import bot.telegram_client
 import time
